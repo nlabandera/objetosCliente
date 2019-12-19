@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Estrellas</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+	
+	 
+</head>
+<body>
+	
+	<script type="module">
+	
+		//const pi = 3.14159;
+
+
+		//array estrellas con objetos de tipo estrella
+		var estrellas = [{
+			nombre:"sirio",
+			temperatura:25200,
+			tamaño:1.19, 
+			magnitud:-1.46,
+			masa:2.02,
+			composicion:["oxigeno","carbono"],
+			edad:20000000,
+			color_estrella:'',
+
+			//metodo get brillo
+			get brillo(){
+				return this.temperatura*this.magnitud;
+
+			},
+
+			//metodo set brillo
+			set color(color){
+				if(this.temperatura<22000){
+					this.color_estrella = "rojo";
+				}
+				else if(this.temperatura>22000 && this.temperatura<30000){
+					this.color_estrella="amarillo/naranja";
+				}
+				else 
+					this.color_estrella = "azul";
+			}
+			
+
+		}];
+
+		//conversion a objeto de fichero json de sol
+		let sol = JSON.parse('{"nombre":"sol","temperatura":5500,"tamaño":1200,"magnitud":-12.7,"masa":1,"composicion":["helio","oxigeno","nitrogeno","hidrogeno"],"edad":20000000}');
+		//conversion a objeto de fichero json de vega
+		let vega = JSON.parse('{"nombre":"vega","temperatura":9602,"tamaño":1.6432,"magnitud":-1.12,"masa":2.13,"edad":455000000}');
+
+		//inserción de objetos en el array estrellas
+		estrellas.push(sol);
+		estrellas.push(vega);
+		
+		//Mostrando los objetos existentes en la estrella
+		for(var x in estrellas){
+			if (typeof(estrellas[x])!='function') {
+				console.log(estrellas[x]);
+				
+			}
+		}
+
+		console.log(estrellas[0].brillo);
+
+		//asignación de color a traves del metodo set color
+		estrellas[0].color = "";
+		console.log(estrellas[0].color_estrella);
+
+		//objeto sistema solar
+		let sistema_solar ={estrella:sol,planetas:8,planetoides:2,satelites:200,galaxia:'via lactea'};
+		console.log(sistema_solar);
+
+		//destructuring
+		let {planetas, satelites}=sistema_solar;
+		console.log(satelites);
+
+		//importación de la clase Planeta y Satelite
+		import {Planeta,Satelite,pi} from './planeta.js';
+		
+		var Tierra = new Planeta(2000,1,true);
+		console.log(Tierra.area());
+		console.log(Planeta);
+
+		var Luna = new Satelite(500,true,'Tierra');
+		console.log(Luna.orbita());
+		console.log(Luna);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+	"nombre":"sol",
+	"temperatura":5500,
+	"tamaño":1200,
+	"masa":1,
+	"composicion":["helio","oxigeno","nitrogeno"],
+	"edad":20000000
+},
+{
+	"nombre":"sirio",
+	"temperatura":10000,
+	"tamaño":1000,
+	"masa":3,
+	"composicion":["oxigeno","carbono"],
+	"edad":100000000
+};
